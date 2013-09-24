@@ -49,7 +49,7 @@ class Database(object):
     def dereference(self, dbref):
         return self.db.dereference(dbref)
     
-    def remove(self, table, parameters):
-        self.db[table].remove(parameters)
+    def remove(self, table, parameters, safe=True):
+        return self.db[table].remove(parameters, safe)
     
     

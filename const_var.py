@@ -47,3 +47,8 @@ ERROR_JR_NOT_PERMIT = 403
 ERROR_JR_GUEST_ROOM_LIMIT = 404   #用户能加入的room限制
 ERROR_JR_JOIN_ALREADY = 405 #已经加入
 
+#search room
+ERROR_SR_KEY = 501
+
+#dissolution room
+ERROR_DR_ROOM_ID = 601

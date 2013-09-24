@@ -16,6 +16,7 @@ from handler.home import MainHandler,RegisterHandler, LoginHandler,\
 import settings
 from handler.chat import CreateRoomHandler, JoinRoomHandler, LeaveRoomHandler,\
     DissolutionRoomHandler
+from handler.search import SearchHandler
 
 define('port', default=8888, help='run on the given port', type=int)
 
@@ -30,7 +31,8 @@ class Application(tornado.web.Application):
                     (r"/create_room", CreateRoomHandler),
                     (r"/join_room", JoinRoomHandler),
                     (r"/leave_room", LeaveRoomHandler),
-                    (r"/dissolution_room", DissolutionRoomHandler)
+                    (r"/dissolution_room", DissolutionRoomHandler),
+                    (r"/search", SearchHandler)
             ]
         
         setting = dict(

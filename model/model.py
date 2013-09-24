@@ -44,7 +44,7 @@ class Model(object):
         return self.db.get_count(self.table, parameters);
     
     def remove(self, parameters):
-        self.db.remove(self.table, parameters)
+        return self.db.remove(self.table, parameters)
 
     def update(self, parameters, update):
         return self.db.update(self.table, parameters, update)

@@ -64,7 +64,7 @@ class LoginHandler(BaseHandler):
             self.response_state(LOGIN_FAILED)
             return
         self.set_secure_cookie("user", str(user["_id"]), expires_days=30)
-        print "get_secure_cookie", self.get_secure_cookie("user")
+        #print "get_secure_cookie", self.get_secure_cookie("user")
         self.response_state(LOGIN_SUCC)
         return
         

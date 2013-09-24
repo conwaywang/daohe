@@ -4,7 +4,7 @@ Created on 2013-9-21
 
 @author: lenovo
 '''
-
+from bson.objectid import ObjectId
 from model import Model
 from const_var import TABLE_USER, MAX_ROOM_NUM_PER_USER, MAX_JOIN_ROOM_NUM
 
@@ -15,23 +15,24 @@ class User(Model):
         user = {
             "_id": self.get_id(),
             "name": '',
-            "password": '',
-            "open": '',
-            "photo_url": '',
-            "likes": 0,
-            "room_list": []
+            "password": ''
+            #"open": '',
+            #"photo_url": '',
+            #"likes": 0,
+            #"room_list": [],
+            #'join_room_list': []
             #black_list
             #black_by_list
-            #join_room_list
+            #
         }
         return user
     
     def update_user(self, user):
-        parameters = {"_id":user["_id"]}
+        parameters = {"_id": user["_id"]}
         return self.update(parameters, user)
     
     def get_user(self, user_id):
-        parameters = {"_id": int(user_id)}
+        parameters = {"_id": user_id}
         return self.get(parameters)
     
     def get_users_count(self):
@@ -42,6 +43,7 @@ class User(Model):
     def is_create_room_able(self, user_id):
         parameters = {"_id": user_id}
         result = self.get(parameters)
+        #print result
         if result.has_key('room_list') and len(result['room_list']) >= MAX_ROOM_NUM_PER_USER:
             return False
         return True
@@ -81,10 +83,10 @@ class User(Model):
         
     #判断user是否还能够加入room. res: 1 已经加入  2加入数量超过限制 0-可以加入
     def is_user_can_join_room(self, user_id, room_id):
-        parameters = {"_id": user_id}
-        fields = {"join_room_list": 1}
-        result = self.get(parameters, fields)
-        if result and len(result):
+        parameters = {"_id": user_id,}
+        result = self.get(parameters)
+        print result
+        if result and len(result) and "join_room_list" in result.keys():
             room_list = result["join_room_list"]
             if room_list and len(room_list):
                 if room_id in room_list:
@@ -101,5 +103,11 @@ class User(Model):
             }
         self.update(parameters, update)
         
-    
+    #user dissolution room
+    def dissolution_room(self, user_id, room_id):
+        parameters = {"_id": user_id}
+        update = {
+                "$pull": {"room_list": room_id}
+            }
+        self.update(parameters, update)
     
