@@ -49,3 +49,6 @@ class Model(object):
     def update(self, parameters, update):
         return self.db.update(self.table, parameters, update)
     
+    def find_and_modify(self, parameters, update):
+        return self.db.find_and_modify(self.table, parameters, update)
+    

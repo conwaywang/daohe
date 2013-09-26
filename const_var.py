@@ -7,6 +7,7 @@ Created on 2013-9-21
 #table
 TABLE_USER = 'user'
 TABLE_ROOM = 'room'
+TABLE_MESSAGE = 'message'
 
 #room max num
 MAX_ROOM_NUM_PER_USER = 1

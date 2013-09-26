@@ -52,4 +52,7 @@ class Database(object):
     def remove(self, table, parameters, safe=True):
         return self.db[table].remove(parameters, safe)
     
+    def find_and_modify(self, table, parameters, update, new=True, upsert=True):
+        return self.db[table].find_and_modify(parameters, update, new, upsert)
+    
     

@@ -20,7 +20,7 @@ class SearchHandler(BaseHandler):
         divider = ";;"  #
         
         if not search_key:
-            self.response_state(ERROR_SR_KEY)
+            self.response(ERROR_SR_KEY)
             return
         tag_list = search_key.split(divider)
         rooms = self.room_dal.get_rooms_by_tags(tag_list, offset, limit)
