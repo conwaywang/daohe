@@ -7,6 +7,7 @@ import hashlib
 import urllib
 import urllib2
 import json
+import tornado.httpclient
 
 
 class JpushClient:
@@ -14,7 +15,8 @@ class JpushClient:
         self.username = username
         self.password = password
         self.callback_url = callback_url
-        self.url = "http://api.jpush.cn:8800/sendmsg/sendmsg"
+        #self.url = "http://api.jpush.cn:8800/sendmsg/sendmsg"
+        self.url = "http://api.jpush.cn:8800/sendmsg/v2/sendmsg"
 
     def build_params(self, kargs):
         params = {}
@@ -169,3 +171,5 @@ class JpushClient:
                 print u"发送失败，错误代码=%s, 错误消息=%s" % (result.get("errcode"), result.get("errmsg"))
         finally:
             f.close()
+            
+    

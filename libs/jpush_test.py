@@ -13,3 +13,6 @@ CONTENT="Testing Python API"
 
 jp = jpush.JpushClient('username', 'password', 'url')
 jp.send_notification_with_tag('tags', 'appkeys', SENDNO, DES, TITLE, CONTENT, 'android')
+
+
+#7c3232e73ba39f4e4b9feb14
